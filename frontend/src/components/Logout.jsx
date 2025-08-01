@@ -7,7 +7,7 @@ function Logout({ setUser }) {
   useEffect(() => {
     const logout = async () => {
       try {
-        const res = await fetch("http://localhost:5000/user/logout", {
+        const res = await fetch("https://newsify-backend-fugz.onrender.com/user/logout", {
           method: "GET",
           credentials: "include",
         });
