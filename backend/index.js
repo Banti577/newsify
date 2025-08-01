@@ -41,13 +41,6 @@ app.use('/img', express.static(path.join(__dirname, 'public/img')));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
-
-
-app.get('/check-session', (req, res) => {
-  console.log("Session Data:", req.session);
-  res.json({ session: req.session });
-});
-
 //Global Middleware to make user available in all views
 
 app.use((req, res, next) => {
