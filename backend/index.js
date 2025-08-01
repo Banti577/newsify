@@ -18,7 +18,7 @@ require('dotenv').config();
 
 //Middleware
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://newsify-gamma-khaki.vercel.app",
    credentials: true  
 }));
 app.use(express.json());
