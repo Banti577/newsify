@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const UserDB = require('../models/userModel');
-const secret = 'upperman@123';
+const secret = process.env.JWT_SECRET;
 
 function generateTokenForUser(user) {
     console.log('profile image is', user.profilePicture)
