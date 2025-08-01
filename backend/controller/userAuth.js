@@ -9,40 +9,46 @@ const otpStore = {}; // OR use MongoDB
 
 async function handleUserSignUp(req, res) {
   const { FullName, email, password } = req.body;
-  const emailExist = await UserDB.findOne({ email })
-  if (emailExist) { return res.status(400).json({ message: "Email already registered" }); }
+  const emailExist = await UserDB.findOne({ email });
+  if (emailExist) {
+    return res.status(400).json({ message: "Email already registered" });
+  }
 
-  // ✅ 2. Generate 6-digit OTP
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-  // ✅ 3. Store OTP temporarily
   otpStore[email] = otp;
 
+  // Set session data
   req.session.FullName = FullName;
   req.session.password = password;
   req.session.email = email;
   req.session.otp = otp;
 
-  // ✅ 4. Send OTP via email
+  // Send email
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'patelvn2002@gmail.com',
-      pass: 'vrzw cdzl zisn ipby'
-    }
+      pass: 'vrzw cdzl zisn ipby',
+    },
   });
 
   await transporter.sendMail({
     from: 'patelvn2002@gmail.com',
     to: email,
     subject: 'Your OTP for Signup',
-    html: `<h3>Your OTP is: ${otp}</h3>`
+    html: `<h3>Your OTP is: ${otp}</h3>`,
   });
 
-  //res.render('verifyOTP', { email }); // Create this form page
-  res.status(200).json({ message: 'OTP sent successfully', email });
+  // ✅ Save session before sending response
+  req.session.save((err) => {
+    if (err) {
+      console.error("Session save failed:", err);
+      return res.status(500).json({ message: "Failed to create session" });
+    }
 
-
+    return res.status(200).json({ message: "OTP sent successfully", email });
+  });
 }
 
 async function handleUserLogin(req, res) {
