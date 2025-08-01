@@ -8,9 +8,7 @@ const { checkAuthenticationCookie } = require('../middleware/authentication');
 
 
 //Sign UP Route and Implementation
-router.get('/signup', (req, res) => {
-  return res.render('signup');
-}).post('/signup', handleUserSignUp);
+router.post('/signup', handleUserSignUp);
 
 router.post('/verify-otp', async(req, res) => {
   const { otp } = req.body
