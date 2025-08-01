@@ -15,7 +15,7 @@ const [user, setUser] = useState(null);
   useEffect(()=>{
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/user/me", {
+        const res = await fetch("https://newsify-backend-fugz.onrender.com/user/me", {
           credentials: "include",
         })
         const data = await res.json();
