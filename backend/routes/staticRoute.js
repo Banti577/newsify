@@ -54,10 +54,6 @@ router.get("/me", checkAuthenticationCookie("token"), (req, res) => {
   return res.status(200).json({ user: req.user });
 });
 
-app.get('/check-session', (req, res) => {
-  console.log("Session data:", req.session);
-  res.json({ session: req.session });
-});
 
 
 
