@@ -18,7 +18,7 @@ require('dotenv').config({ path: './backend/.env' });
 
 //Middleware
 app.use(cors({
-  origin: ["https://newsify-gamma-khaki.vercel.app"],
+    origin: "https://newsify-gamma-khaki.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
