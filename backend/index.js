@@ -18,8 +18,9 @@ require('dotenv').config();
 
 //Middleware
 app.use(cors({
-  origin: "https://newsify-gamma-khaki.vercel.app",
-   credentials: true  
+  origin: ["https://newsify-gamma-khaki.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
