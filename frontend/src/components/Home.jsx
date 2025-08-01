@@ -9,7 +9,7 @@ import "./Home.css"; // Enhanced Design CSS
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
-  const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://newsify-backend-fugz.onrender.com";
 
   useEffect(() => {
     axios.get("https://newsify-backend-fugz.onrender.com/api")
