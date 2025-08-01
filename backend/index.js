@@ -17,6 +17,7 @@ require('dotenv').config({ path: './backend/.env' });
 
 
 //Middleware
+app.set('trust proxy', 1); // Required when behind a proxy (like Render)
 app.use(cors({
     origin: "https://newsify-gamma-khaki.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
