@@ -40,9 +40,17 @@
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
+
+/* 👇 Mobile optimization: 0 to 480px width */
+@media (max-width: 480px) {
+  .blog-grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+}
+
 
 .blog-card {
   border: none;
