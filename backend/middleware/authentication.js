@@ -1,0 +1,23 @@
+const {verifyToken} = require('../services/authentication');
+function checkAuthenticationCookie(cookieName) {
+    return (req, res, next) => {
+       // console.log('me yaha hu', req.cookies[cookieName]);
+
+        const tokenCookieValue = req.cookies[cookieName];
+        if (!tokenCookieValue) {
+            return next();
+            
+    }
+
+    try {
+    const userPayload = verifyToken(tokenCookieValue);
+         req.user = userPayload;
+    }
+    catch (error) {}
+next();
+};
+}
+
+module.exports = {
+    checkAuthenticationCookie,
+};  
