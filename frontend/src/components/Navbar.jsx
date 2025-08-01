@@ -47,7 +47,7 @@ const Navbar = ({ user }) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
-      <div className="container">
+     
         <Link className="navbar-brand fw-bold fs-4 text-primary" to="/">
           <i className="bi bi-journal-text me-2"></i>Blogify
         </Link>
@@ -147,7 +147,7 @@ const Navbar = ({ user }) => {
             )}
           </div>
         </div>
-      </div>
+     
     </nav>
   );
 };
