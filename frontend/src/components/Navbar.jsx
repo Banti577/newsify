@@ -9,7 +9,7 @@ const Navbar = ({ user }) => {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const navigate = useNavigate();
 
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = "https://newsify-backend-fugz.onrender.com";
 
  useEffect(() => {
   const fetchBlogs = async () => {
