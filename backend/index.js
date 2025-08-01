@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 const { checkAuthenticationCookie } = require('./middleware/authentication');
 const session = require('express-session');
 const cors = require("cors");
-require('dotenv').config();
+require('dotenv').config({ path: './backend/.env' });
 
 
 //Middleware
