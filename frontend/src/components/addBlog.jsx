@@ -19,7 +19,7 @@ function AddBlog() {
     formData.append("coverImage", coverImage);
 
     try {
-      const res = await fetch("http://localhost:5000/blog", {
+      const res = await fetch("https://newsify-backend-fugz.onrender.com/blog", {
         method: "POST",
         body: formData,
         credentials: "include",
