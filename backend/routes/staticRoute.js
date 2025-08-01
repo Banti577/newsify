@@ -14,7 +14,8 @@ router.get('/signup', (req, res) => {
 
 router.post('/verify-otp', async(req, res) => {
   const { otp } = req.body
-  if (otp == 1234) {
+  console.log(req.session.otp);
+  if (otp == req.session.otp) {
     req.session.emailVerified = true;
 
     const FullName =  req.session.FullName;
