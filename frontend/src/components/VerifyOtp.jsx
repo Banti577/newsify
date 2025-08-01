@@ -13,7 +13,7 @@ const VerifyOtp = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/user/verify-otp", {
+      const res = await fetch("https://newsify-backend-fugz.onrender.com/user/verify-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
