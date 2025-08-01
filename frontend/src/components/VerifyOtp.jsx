@@ -9,14 +9,6 @@ const VerifyOtp = () => {
 
   //const email = location.state?.email;
 
-  useEffect(() => {
-  fetch("https://newsify-backend-fugz.onrender.com/check-session", {
-    credentials: "include"
-  })
-    .then(res => res.json())
-    .then(data => console.log("SESSION:", data));
-}, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
