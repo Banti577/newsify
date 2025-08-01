@@ -83,14 +83,18 @@ const Navbar = ({ user }) => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <img
-                    src={`${BASE_URL}${user.profileImgUrl}` || "/default-profile.png"}
-                    className="rounded-circle me-2"
-                    width="36"
-                    height="36"
-                    alt="Profile"
-                    style={{ objectFit: "cover" }}
-                  />
+                 <img
+  src={
+    user?.profileImgUrl
+      ? `${BASE_URL}${user.profileImgUrl}`
+      : "/default-profile.png"
+  }
+  className="rounded-circle me-2"
+  width="36"
+  height="36"
+  alt="Profile"
+  style={{ objectFit: "cover" }}
+/>
                   <span>{user.FullName}</span>
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end">
