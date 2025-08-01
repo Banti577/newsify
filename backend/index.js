@@ -29,7 +29,10 @@ app.use(session({
   secret: 'aatena@biharmai', // कोई strong secret डालो
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // secure: true तभी जब HTTPS हो
+  cookie: {
+    secure: true,          // ✅ must be true when using HTTPS (Render uses HTTPS)
+    sameSite: 'none',      // ✅ needed when frontend is on a different domain (Vercel)
+  }
 }));
 app.use(checkAuthenticationCookie('token'));
 app.use(express.static(path.resolve('./public')));
