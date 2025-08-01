@@ -12,7 +12,7 @@ function Home() {
   const BASE_URL = "http://localhost:5000";
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api")
+    axios.get("https://newsify-backend-fugz.onrender.com/api")
       .then((res) => setBlogs(res.data))
       .catch((err) => console.error(err));
   }, []);
