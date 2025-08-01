@@ -30,7 +30,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: true,          // ✅ must be true when using HTTPS (Render uses HTTPS)
+    secure: process.env.NODE_ENV === 'production',           // ✅ must be true when using HTTPS (Render uses HTTPS)
     sameSite: 'none',      // ✅ needed when frontend is on a different domain (Vercel)
     httpOnly: true,
   }
