@@ -29,7 +29,7 @@ router.post('/verify-otp', async(req, res) => {
   });
      return res.status(200).json({ message: "OTP verified successfully" });
   } else {
-       return res.status(400).json({ message: "Invalid OTP" });
+       return res.status(400).json({ message: "Invalid hai bhau OTP" });
   }
 })
 
