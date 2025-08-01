@@ -34,9 +34,7 @@ router.post('/verify-otp', async(req, res) => {
 
 
 
-router.get('/login', (req, res) => {
-  return res.render('login');
-}).post('/login', handleUserLogin);
+router.post('/login', handleUserLogin);
 
 router.get('/logout', (req, res) => {
   res.clearCookie('token');
