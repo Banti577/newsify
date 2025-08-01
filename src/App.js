@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Signup from "./components/signup";
+import VerifyOtp from "./components/VerifyOtp";
+import Login from "./components/Login";
+import { useEffect, useState } from "react";
+import Logout from "./components/Logout";
+import AddBlog from "./components/addBlog";
+import BlogDetail from "./components/BlogDetail";
 
 function App() {
+const [user, setUser] = useState(null);
+
+  useEffect(()=>{
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/user/me", {
+          credentials: "include",
+        })
+        const data = await res.json();
+        if (res.ok) {
+          setUser(data.user);
+        } else {
+          setUser(null);
+
+
+        }} catch (err) {
+          console.error("Error fetching user:", err);
+          setUser(null);
+        }
+      }
+    fetchUser();
+
+    }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar user={user} />
+      <Routes>
+
+
+        <Route path="/" element={<Home />} />
+        <Route path="/user/signup" element={<Signup />} />
+        <Route path="/user/login" element={<Login setUser={setUser} />} />
+        <Route path="/user/logout" element={<Logout setUser={setUser} />} />
+        <Route path="/verifyOtp" element={<VerifyOtp />} />
+        <Route path="/blog/addBlog" element={<AddBlog />} />
+        <Route path="/blog/:BlogId" element={<BlogDetail />} />
+       
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
+export default App
