@@ -53,9 +53,10 @@ router.get("/me", checkAuthenticationCookie("token"), (req, res) => {
   return res.status(200).json({ user: req.user });
 });
 
-router.get('/my-profile', (req, res) => {
-  res.render('myProfile');
-})
+app.get('/check-session', (req, res) => {
+  console.log("Session data:", req.session);
+  res.json({ session: req.session });
+});
 
 
 
@@ -97,6 +98,7 @@ router.post('/comment/:id/like', async (req, res) => {
   }
 
 })
+
 
 
 
